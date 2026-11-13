@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#202225">
+  <title>Mensagens — Connect</title>
+  <link rel="stylesheet" href="mensagens.css">
+</head>
+<body>
+  <div class="dm-app">
+    <aside class="dm-sidebar">
+      <a class="back-link" href="index.html">← Voltar ao Connect</a>
+      <h2>Mensagens</h2>
+
+      <div class="search-box">
+        <input id="searchInput" placeholder="Buscar por @usuário">
+        <button id="searchButton">⌕</button>
+      </div>
+
+      <div class="tabs">
+        <button class="tab active" data-tab="conversations">Conversas</button>
+        <button class="tab" data-tab="friends">Amigos</button>
+        <button class="tab" data-tab="requests">Solicitações</button>
+      </div>
+
+      <div id="sidebarList" class="sidebar-list">
+        <p class="muted">Carregando...</p>
+      </div>
+    </aside>
+
+    <main class="dm-main">
+      <header class="dm-header">
+        <div class="dm-person">
+          <img id="chatAvatar" src="https://placehold.co/80x80/5865f2/ffffff?text=C" alt="">
+          <div>
+            <strong id="chatName">Suas mensagens</strong>
+            <span id="chatStatus">Escolha uma conversa</span>
+          </div>
+        </div>
+        <a href="index.html" class="home-link">Início</a>
+      </header>
+
+      <section id="welcome" class="welcome">
+        <div class="welcome-icon">✉</div>
+        <h1>Suas conversas</h1>
+        <p>Encontre pessoas e converse em particular.</p>
+      </section>
+
+      <section id="chatSection" class="chat-section hidden">
+        <div id="dmMessages" class="dm-messages"></div>
+
+        <form id="dmForm" class="dm-form">
+          <input id="dmInput" maxlength="2000" autocomplete="off"
+            placeholder="Escreva uma mensagem...">
+          <button type="submit">Enviar ➤</button>
+        </form>
+      </section>
+
+      <section id="searchResults" class="search-results hidden">
+        <h2>Resultados da pesquisa</h2>
+        <div id="peopleList"></div>
+      </section>
+    </main>
+  </div>
+
+  <div id="notice" class="notice"></div>
+
+  <script type="module" src="mensagens.js"></script>
+</body>
+</html>
