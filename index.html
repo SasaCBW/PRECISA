@@ -1,0 +1,386 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PRECISA: encontre oportunidades, educação, serviços, organização financeira e ajuda em um só lugar.">
+  <meta name="theme-color" content="#091525">
+  <title>PRECISA — Tudo o que você precisa</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="header">
+  <a href="#" class="logo">PRECISA<span>.</span></a>
+
+  <nav class="navigation" id="navigation">
+    <a href="#inicio">Início</a>
+    <a href="#oportunidades">Oportunidades</a>
+    <a href="#educacao">Educação</a>
+    <a href="#financeiro">Finanças</a>
+    <a href="#servicos">Serviços</a>
+    <a href="#comunidade">Comunidade</a>
+  </nav>
+
+  <div class="header-actions">
+    <a href="login.html" class="login-link">Entrar</a>
+    <a href="cadastro.html" class="header-button">Criar conta <span>↗</span></a>
+  </div>
+
+  <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">☰</button>
+</header>
+
+<main>
+
+<section class="hero" id="inicio">
+  <div class="hero-content">
+    <div class="eyebrow">
+      <span class="status-dot"></span>
+      UM LUGAR PARA NOVAS POSSIBILIDADES
+    </div>
+
+    <h1>
+      Sua vida pode<br>
+      <span>ir mais longe.</span>
+    </h1>
+
+    <p class="hero-description">
+      Encontre oportunidades, aprenda, organize sua vida
+      financeira e descubra soluções para o seu dia a dia.
+      Tudo em uma única plataforma.
+    </p>
+
+    <div class="hero-buttons">
+      <a href="#explorar" class="primary-button">
+        Explorar plataforma <span>↗</span>
+      </a>
+      <a href="#sobre" class="secondary-button">
+        Conheça o PRECISA
+      </a>
+    </div>
+
+    <div class="hero-trust">
+      <span class="trust-icon">✦</span>
+      Mais possibilidades. Menos complicação.
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="visual-glow"></div>
+
+    <div class="dashboard-preview">
+      <div class="preview-top">
+        <div>
+          <span class="preview-label">SUA CENTRAL DE POSSIBILIDADES</span>
+          <h3>Bem-vindo ao PRECISA.</h3>
+        </div>
+        <div class="preview-avatar">P</div>
+      </div>
+
+      <div class="preview-highlight">
+        <span>✦</span>
+        <div>
+          <strong>Um novo caminho começa aqui.</strong>
+          <p>Descubra recursos para sua vida.</p>
+        </div>
+      </div>
+
+      <div class="preview-grid">
+        <div class="preview-card">
+          <span class="preview-symbol cyan">↗</span>
+          <strong>Oportunidades</strong>
+          <small>Descubra caminhos</small>
+        </div>
+        <div class="preview-card">
+          <span class="preview-symbol purple">▤</span>
+          <strong>Educação</strong>
+          <small>Aprenda mais</small>
+        </div>
+        <div class="preview-card">
+          <span class="preview-symbol green">R$</span>
+          <strong>Finanças</strong>
+          <small>Organize sua vida</small>
+        </div>
+        <div class="preview-card">
+          <span class="preview-symbol orange">♡</span>
+          <strong>Comunidade</strong>
+          <small>Ajude e participe</small>
+        </div>
+      </div>
+
+      <div class="preview-bottom">
+        <span class="pulse"></span>
+        Um mundo de possibilidades em um só lugar.
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="search-section" id="explorar">
+  <div class="search-container">
+    <div>
+      <span class="section-kicker">COMECE POR AQUI</span>
+      <h2>O que você precisa hoje?</h2>
+      <p>Pesquise e encontre uma área que possa ajudar você.</p>
+    </div>
+
+    <div class="search-box">
+      <span>⌕</span>
+      <input type="search" id="mainSearch"
+        placeholder="Ex.: emprego, curso gratuito, finanças...">
+      <button id="searchButton">Pesquisar</button>
+    </div>
+
+    <div class="search-hints">
+      <span>Buscas populares:</span>
+      <button class="search-tag" data-search="emprego">Emprego</button>
+      <button class="search-tag" data-search="curso">Cursos</button>
+      <button class="search-tag" data-search="finanças">Finanças</button>
+      <button class="search-tag" data-search="serviços">Serviços</button>
+    </div>
+  </div>
+</section>
+
+<section class="section categories-section">
+  <div class="section-heading">
+    <div>
+      <span class="section-kicker">NOSSAS SOLUÇÕES</span>
+      <h2>Um mundo de possibilidades.</h2>
+      <p>Explore as áreas que fazem parte do PRECISA.</p>
+    </div>
+  </div>
+
+  <div class="categories-grid" id="categoriesGrid">
+
+    <a href="oportunidades.html" class="category-card"
+      data-category="emprego trabalho vagas estágio">
+      <div class="category-icon icon-blue">↗</div>
+      <span class="category-number">01 / CARREIRA</span>
+      <h3>Empregos e oportunidades</h3>
+      <p>Descubra vagas, estágios e novos caminhos profissionais.</p>
+      <span class="card-link">Explorar oportunidades ↗</span>
+    </a>
+
+    <a href="educacao.html" class="category-card"
+      data-category="educação cursos estudos aprender">
+      <div class="category-icon icon-purple">▤</div>
+      <span class="category-number">02 / CONHECIMENTO</span>
+      <h3>Educação e aprendizado</h3>
+      <p>Encontre cursos, conteúdos educativos e ferramentas de estudo.</p>
+      <span class="card-link">Começar a aprender ↗</span>
+    </a>
+
+    <a href="#financeiro" class="category-card"
+      data-category="dinheiro finanças orçamento economia">
+      <div class="category-icon icon-green">R$</div>
+      <span class="category-number">03 / ORGANIZAÇÃO</span>
+      <h3>Vida financeira</h3>
+      <p>Planeje despesas, organize seu orçamento e acompanhe metas.</p>
+      <span class="card-link">Organizar minhas finanças ↗</span>
+    </a>
+
+    <a href="servicos.html" class="category-card"
+      data-category="serviços profissionais negócios">
+      <div class="category-icon icon-orange">⌘</div>
+      <span class="category-number">04 / FACILIDADES</span>
+      <h3>Serviços e profissionais</h3>
+      <p>Conheça prestadores de serviços e pequenos negócios.</p>
+      <span class="card-link">Encontrar serviços ↗</span>
+    </a>
+
+    <a href="comunidade.html" class="category-card"
+      data-category="ajuda doações comunidade solidariedade">
+      <div class="category-icon icon-pink">♡</div>
+      <span class="category-number">05 / SOLIDARIEDADE</span>
+      <h3>Ajuda e comunidade</h3>
+      <p>Conheça iniciativas sociais e oportunidades de colaboração.</p>
+      <span class="card-link">Conhecer comunidade ↗</span>
+    </a>
+
+    <a href="assistente.html" class="category-card"
+      data-category="inteligência artificial assistente tecnologia">
+      <div class="category-icon icon-cyan">✧</div>
+      <span class="category-number">06 / TECNOLOGIA</span>
+      <h3>Assistente inteligente</h3>
+      <p>Encontre orientação e ferramentas para facilitar tarefas.</p>
+      <span class="card-link">Conhecer assistente ↗</span>
+    </a>
+
+  </div>
+  <p class="no-results" id="noResults" hidden>Nenhuma categoria encontrada. Tente outra pesquisa.</p>
+</section>
+
+<section class="finance-section" id="financeiro">
+  <div class="finance-content">
+    <span class="section-kicker">FERRAMENTA GRATUITA</span>
+    <h2>Organize seu dinheiro.<br><span>Planeje seu futuro.</span></h2>
+    <p>
+      Tenha uma visão mais clara da sua vida financeira.
+      Experimente nossa calculadora de orçamento mensal.
+    </p>
+
+    <div class="finance-features">
+      <span>✓ Controle de despesas</span>
+      <span>✓ Planejamento mensal</span>
+      <span>✓ Organização de metas</span>
+    </div>
+  </div>
+
+  <div class="calculator">
+    <div class="calculator-header">
+      <div>
+        <span>SIMULADOR FINANCEIRO</span>
+        <h3>Seu orçamento mensal</h3>
+      </div>
+      <span class="calculator-icon">R$</span>
+    </div>
+
+    <label for="income">Quanto você recebe por mês?</label>
+    <div class="money-input">
+      <span>R$</span>
+      <input type="number" id="income" placeholder="3000" min="0">
+    </div>
+
+    <label for="expenses">Quanto gasta por mês?</label>
+    <div class="money-input">
+      <span>R$</span>
+      <input type="number" id="expenses" placeholder="1800" min="0">
+    </div>
+
+    <button class="calculate-button" id="calculateButton">
+      Calcular meu orçamento →
+    </button>
+
+    <div class="calculator-result" id="calculatorResult" aria-live="polite">
+      <span>SEU SALDO ESTIMADO</span>
+      <strong id="balance">R$ 0,00</strong>
+      <p id="balanceMessage">Informe seus valores para começar.</p>
+    </div>
+    <small class="disclaimer">
+      Simulação educativa. Não representa aconselhamento financeiro.
+    </small>
+  </div>
+</section>
+
+<section class="opportunities-section section" id="oportunidades">
+  <div class="section-heading">
+    <div>
+      <span class="section-kicker">SEU PRÓXIMO PASSO</span>
+      <h2>Oportunidades começam com acesso.</h2>
+      <p>Descubra caminhos para aprender, trabalhar e crescer.</p>
+    </div>
+    <a href="oportunidades.html" class="text-link">Ver oportunidades ↗</a>
+  </div>
+
+  <div class="opportunity-grid">
+    <article class="opportunity-card">
+      <div class="opportunity-icon">🎓</div>
+      <span class="opportunity-type">EDUCAÇÃO</span>
+      <h3>Cursos gratuitos</h3>
+      <p>Conheça plataformas que oferecem formação e aprendizado.</p>
+      <a href="educacao.html">Explorar cursos ↗</a>
+    </article>
+
+    <article class="opportunity-card">
+      <div class="opportunity-icon">💼</div>
+      <span class="opportunity-type">CARREIRA</span>
+      <h3>Encontre oportunidades</h3>
+      <p>Prepare-se para buscar vagas e construir sua carreira.</p>
+      <a href="oportunidades.html">Buscar oportunidades ↗</a>
+    </article>
+
+    <article class="opportunity-card">
+      <div class="opportunity-icon">🚀</div>
+      <span class="opportunity-type">DESENVOLVIMENTO</span>
+      <h3>Aprenda novas habilidades</h3>
+      <p>Descubra conhecimentos que podem abrir novas portas.</p>
+      <a href="educacao.html">Descobrir caminhos ↗</a>
+    </article>
+  </div>
+</section>
+
+<section class="community-section" id="comunidade">
+  <div class="community-content">
+    <span class="section-kicker">JUNTOS PODEMOS MAIS</span>
+    <h2>Uma oportunidade pode<br>mudar uma história.</h2>
+    <p>
+      O PRECISA também quer aproximar pessoas, iniciativas
+      sociais e projetos que fazem a diferença.
+    </p>
+    <a href="comunidade.html" class="community-button">
+      Conhecer a comunidade ↗
+    </a>
+  </div>
+  <div class="community-art">
+    <div class="community-circle circle-one"></div>
+    <div class="community-circle circle-two"></div>
+    <div class="community-message">
+      <span>✦</span>
+      <h3>Pequenas ações.<br>Grandes possibilidades.</h3>
+      <p>Conhecimento, oportunidade e solidariedade.</p>
+    </div>
+  </div>
+</section>
+
+<section class="about-section section" id="sobre">
+  <span class="section-kicker">NOSSA MISSÃO</span>
+  <h2>Mais acesso.<br><span>Mais possibilidades.</span></h2>
+  <p>
+    Acreditamos que encontrar informação, oportunidades e
+    soluções não deveria ser complicado. Por isso, estamos
+    construindo um espaço que reúne ferramentas úteis para
+    tornar o cotidiano mais simples.
+  </p>
+</section>
+
+<section class="cta-section">
+  <span class="section-kicker">SEU FUTURO COMEÇA COM UM PASSO</span>
+  <h2>Descubra o que é possível.</h2>
+  <p>Explore, aprenda, organize e encontre novas oportunidades.</p>
+  <a href="cadastro.html" class="primary-button">Faça parte do PRECISA ↗</a>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-main">
+    <div class="footer-brand">
+      <a href="#" class="logo">PRECISA<span>.</span></a>
+      <p>Tudo o que você precisa para dar o próximo passo.</p>
+    </div>
+
+    <div class="footer-column">
+      <strong>Plataforma</strong>
+      <a href="oportunidades.html">Oportunidades</a>
+      <a href="educacao.html">Educação</a>
+      <a href="servicos.html">Serviços</a>
+    </div>
+
+    <div class="footer-column">
+      <strong>Comunidade</strong>
+      <a href="comunidade.html">Ajuda e doações</a>
+      <a href="assistente.html">Assistente</a>
+      <a href="#sobre">Sobre nós</a>
+    </div>
+
+    <div class="footer-column">
+      <strong>Conta</strong>
+      <a href="login.html">Entrar</a>
+      <a href="cadastro.html">Criar conta</a>
+      <a href="admin.html">Administração</a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span>© <span id="currentYear"></span> PRECISA. Todos os direitos reservados.</span>
+    <span>Feito para conectar pessoas a possibilidades.</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
