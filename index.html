@@ -1,206 +1,216 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#202225">
+  <meta name="theme-color" content="#111827">
   <title>Connect — Sua comunidade</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
-  <div id="loadingScreen" class="loading-screen">
-    <div class="loading-logo">C</div>
-    <p>Conectando ao Connect...</p>
-  </div>
 
-  <div id="app" class="app hidden">
-    <aside class="server-rail">
-      <button class="server-icon home-icon active" id="homeButton" title="Início">C</button>
-      <div class="rail-divider"></div>
-      <div id="serverList" class="server-list"></div>
-      <button class="server-icon add-server" id="createServerButton" title="Criar comunidade">+</button>
-    </aside>
+  <div class="app">
 
     <aside class="sidebar">
-      <div class="sidebar-header">
-        <div>
-          <strong>Connect</strong>
-          <span>Seu espaço social</span>
-        </div>
-        <button class="icon-button" id="sidebarMenuButton" title="Opções">⌄</button>
+      <div class="brand">
+        <div class="brand-icon"><i class="fa-solid fa-comments"></i></div>
+        <span>Connect</span>
       </div>
-
-      <div class="sidebar-search">
-        <span>⌕</span>
-        <input id="userSearchInput" type="search" placeholder="Encontrar pessoas">
-      </div>
-
-      <button class="sidebar-link active" id="friendsButton">
-        <span>♙</span> Amigos
-      </button>
-      <button class="sidebar-link" id="directMessagesButton">
-        <span>✉</span> Mensagens diretas
-      </button>
 
       <div class="sidebar-section">
-        <div class="section-heading">
-          <span>CANAIS</span>
-          <button id="createChannelButton" title="Criar canal">+</button>
-        </div>
-        <div id="channelList" class="channel-list"></div>
+        <p class="section-title">MENU PRINCIPAL</p>
+
+        <button class="sidebar-link active" id="homeButton">
+          <i class="fa-solid fa-house"></i>
+          <span>Início</span>
+        </button>
+
+        <a class="sidebar-link" href="mensagens.html" id="directMessagesButton">
+          <i class="fa-solid fa-envelope"></i>
+          <span>Mensagens diretas</span>
+        </a>
+
+        <button class="sidebar-link" id="peopleButton">
+          <i class="fa-solid fa-user-group"></i>
+          <span>Encontrar pessoas</span>
+        </button>
+
+        <button class="sidebar-link" id="notificationsButton">
+          <i class="fa-solid fa-bell"></i>
+          <span>Notificações</span>
+        </button>
+      </div>
+
+      <div class="sidebar-section">
+        <p class="section-title">COMUNIDADES</p>
+        <div id="serversList"></div>
+
+        <button class="sidebar-link" id="createServerButton">
+          <i class="fa-solid fa-plus"></i>
+          <span>Criar comunidade</span>
+        </button>
       </div>
 
       <div class="sidebar-bottom">
         <div class="user-mini">
-          <button class="avatar-button" id="myAvatarButton">
-            <img id="myAvatar" src="https://placehold.co/80x80/5865f2/ffffff?text=C" alt="Sua foto">
-            <span class="online-dot"></span>
-          </button>
+          <img id="sidebarAvatar" src="https://placehold.co/45x45/263247/ffffff?text=C" alt="Foto do perfil">
           <div class="user-mini-info">
-            <strong id="myName">Carregando...</strong>
-            <span id="myUsername">@usuario</span>
+            <strong id="sidebarUsername">Carregando...</strong>
+            <small>Conectado</small>
           </div>
-          <button class="icon-button" id="editProfileButton" title="Editar perfil">⚙</button>
-          <button class="icon-button logout-button" id="logoutButton" title="Sair">⇥</button>
+          <button id="logoutButton" title="Sair">
+            <i class="fa-solid fa-right-from-bracket"></i>
+          </button>
         </div>
       </div>
     </aside>
 
-    <main class="main-panel">
+    <main class="main-content">
+
       <header class="topbar">
-        <div class="current-channel">
-          <span id="currentChannelIcon">#</span>
-          <strong id="currentChannelName">geral</strong>
-          <span class="topbar-description" id="currentChannelDescription">Converse com a comunidade</span>
+        <div>
+          <h1 id="pageTitle">Início</h1>
+          <p>Conecte-se com pessoas e comunidades.</p>
         </div>
+
         <div class="topbar-actions">
-          <button class="icon-button" id="membersToggleButton" title="Participantes">♧</button>
-          <button class="icon-button" id="notificationsButton" title="Notificações">♢</button>
-          <button class="icon-button" id="openProfileButton" title="Meu perfil">☺</button>
+          <button id="topNotificationsButton" title="Notificações">
+            <i class="fa-solid fa-bell"></i>
+          </button>
+          <button id="profileButton" title="Meu perfil">
+            <img id="topAvatar" src="https://placehold.co/40x40/263247/ffffff?text=C" alt="Perfil">
+          </button>
         </div>
       </header>
 
-      <section id="welcomePanel" class="welcome-panel hidden">
-        <div class="welcome-symbol">C</div>
-        <h1>Bem-vindo ao Connect</h1>
-        <p>Encontre pessoas, participe de comunidades e comece uma conversa.</p>
-        <button class="primary-button" id="welcomeCreateServer">Criar comunidade</button>
+      <section class="welcome-card">
+        <div>
+          <span class="welcome-label">BEM-VINDO AO CONNECT</span>
+          <h2>Suas conexões começam aqui.</h2>
+          <p>Compartilhe ideias, participe de comunidades e converse com outras pessoas.</p>
+        </div>
+        <div class="welcome-decoration">
+          <i class="fa-solid fa-users"></i>
+        </div>
       </section>
 
-      <section id="chatPanel" class="chat-panel">
-        <div id="messagesArea" class="messages-area">
-          <div class="channel-intro">
-            <div class="channel-hash">#</div>
-            <h2 id="channelIntroName">geral</h2>
-            <p>Este é o começo deste canal. Diga olá!</p>
+      <section class="content-grid">
+
+        <div class="feed-column">
+
+          <div class="create-post-card">
+            <div class="create-post-header">
+              <img id="postAvatar" src="https://placehold.co/45x45/263247/ffffff?text=C" alt="Seu perfil">
+              <textarea id="postContent" placeholder="O que você gostaria de compartilhar?"></textarea>
+            </div>
+
+            <div class="create-post-actions">
+              <label class="post-image-label" for="postImage">
+                <i class="fa-solid fa-image"></i>
+                Foto
+              </label>
+              <input type="file" id="postImage" accept="image/*" hidden>
+
+              <button id="publishPostButton">
+                <i class="fa-solid fa-paper-plane"></i>
+                Publicar
+              </button>
+            </div>
           </div>
-          <div id="messagesList" class="messages-list"></div>
-        </div>
 
-        <form id="messageForm" class="message-form">
-          <button type="button" class="attach-button" id="attachButton" title="Anexar imagem">+</button>
-          <input type="file" id="messageImageInput" accept="image/*" hidden>
-          <input id="messageInput" type="text" maxlength="2000" autocomplete="off" placeholder="Enviar mensagem em #geral">
-          <button type="submit" class="send-button" title="Enviar mensagem">➤</button>
-        </form>
-      </section>
-
-      <section id="friendsPanel" class="friends-panel hidden">
-        <div class="friends-heading">
-          <div>
-            <span class="eyebrow">CONNECT</span>
-            <h1>Encontre pessoas</h1>
-            <p>Pesquise usuários e comece novas conversas.</p>
+          <div class="feed-header">
+            <h2>Publicações recentes</h2>
+            <span>Comunidade</span>
           </div>
+
+          <div id="postsContainer">
+            <div class="loading-message">
+              <i class="fa-solid fa-spinner fa-spin"></i>
+              Carregando publicações...
+            </div>
+          </div>
+
         </div>
-        <div class="people-search">
-          <span>⌕</span>
-          <input id="peopleSearchInput" type="search" placeholder="Buscar por nome ou @usuário">
-          <button id="peopleSearchButton" class="primary-button">Buscar</button>
-        </div>
-        <div id="peopleResults" class="people-results">
-          <div class="empty-state">Digite um nome ou usuário para encontrar pessoas.</div>
-        </div>
+
+        <aside class="right-column">
+
+          <div class="side-card">
+            <div class="side-card-header">
+              <h3>Seu perfil</h3>
+              <button id="editProfileButton">Editar</button>
+            </div>
+
+            <div class="profile-summary">
+              <img id="profileCardAvatar" src="https://placehold.co/75x75/263247/ffffff?text=C" alt="Perfil">
+              <h3 id="profileCardName">Carregando...</h3>
+              <p id="profileCardUsername">@usuario</p>
+              <p id="profileCardBio">Bem-vindo ao Connect!</p>
+            </div>
+          </div>
+
+          <div class="side-card">
+            <div class="side-card-header">
+              <h3>Pessoas</h3>
+              <button id="seePeopleButton">Ver todas</button>
+            </div>
+            <div id="suggestedPeople">
+              <p class="empty-message">Carregando pessoas...</p>
+            </div>
+          </div>
+
+          <div class="side-card community-tip">
+            <i class="fa-solid fa-lightbulb"></i>
+            <h3>Faça novas conexões</h3>
+            <p>Encontre pessoas com interesses parecidos e participe das conversas.</p>
+            <a href="mensagens.html">Abrir mensagens <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+
+        </aside>
+
       </section>
+
     </main>
 
-    <aside class="members-panel" id="membersPanel">
-      <div class="members-heading">
-        <strong>Participantes</strong>
-        <span id="membersCount">0</span>
-      </div>
-      <div id="membersList" class="members-list"></div>
-    </aside>
   </div>
 
-  <div id="profileModal" class="modal hidden">
-    <div class="modal-card profile-modal">
-      <button class="modal-close" data-close="profileModal">×</button>
-      <div class="modal-banner"></div>
-      <div class="profile-photo-area">
-        <img id="profilePhotoPreview" src="https://placehold.co/160x160/5865f2/ffffff?text=C" alt="Foto do perfil">
-        <label class="photo-change-button" for="profilePhotoInput">Alterar foto</label>
-        <input id="profilePhotoInput" type="file" accept="image/png,image/jpeg,image/webp" hidden>
-      </div>
+  <div id="toastContainer" class="toast-container"></div>
+
+  <div id="profileModal" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" id="closeProfileModal">&times;</button>
       <h2>Editar perfil</h2>
-      <form id="profileForm" class="modal-form">
-        <label for="profileNameInput">Nome de exibição</label>
-        <input id="profileNameInput" maxlength="40" required placeholder="Seu nome">
-        <label for="profileUsernameInput">Nome de usuário</label>
-        <input id="profileUsernameInput" maxlength="24" required placeholder="seuusuario">
-        <label for="profileBioInput">Sobre mim</label>
-        <textarea id="profileBioInput" maxlength="190" rows="3" placeholder="Conte um pouco sobre você"></textarea>
-        <button type="submit" class="primary-button full-button">Salvar alterações</button>
-      </form>
-      <p id="profileStatus" class="form-status"></p>
+
+      <label for="editDisplayName">Nome</label>
+      <input type="text" id="editDisplayName" placeholder="Seu nome">
+
+      <label for="editUsername">Nome de usuário</label>
+      <input type="text" id="editUsername" placeholder="seuusuario">
+
+      <label for="editBio">Biografia</label>
+      <textarea id="editBio" placeholder="Conte um pouco sobre você"></textarea>
+
+      <label for="editAvatar">Foto de perfil</label>
+      <input type="file" id="editAvatar" accept="image/*">
+
+      <button id="saveProfileButton">Salvar alterações</button>
     </div>
   </div>
 
-  <div id="createServerModal" class="modal hidden">
-    <div class="modal-card">
-      <button class="modal-close" data-close="createServerModal">×</button>
+  <div id="createServerModal" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" id="closeServerModal">&times;</button>
       <h2>Criar comunidade</h2>
-      <p>Crie um espaço para reunir pessoas.</p>
-      <form id="createServerForm" class="modal-form">
-        <label for="serverNameInput">Nome da comunidade</label>
-        <input id="serverNameInput" maxlength="40" required placeholder="Ex.: Comunidade de tecnologia">
-        <label for="serverDescriptionInput">Descrição</label>
-        <textarea id="serverDescriptionInput" maxlength="160" rows="3" placeholder="Sobre esta comunidade"></textarea>
-        <button type="submit" class="primary-button full-button">Criar comunidade</button>
-      </form>
+
+      <label for="serverName">Nome da comunidade</label>
+      <input type="text" id="serverName" placeholder="Ex.: Tecnologia e programação">
+
+      <label for="serverDescription">Descrição</label>
+      <textarea id="serverDescription" placeholder="Sobre o que é sua comunidade?"></textarea>
+
+      <button id="confirmCreateServerButton">Criar comunidade</button>
     </div>
   </div>
-
-  <div id="createChannelModal" class="modal hidden">
-    <div class="modal-card">
-      <button class="modal-close" data-close="createChannelModal">×</button>
-      <h2>Criar canal</h2>
-      <p>Organize as conversas da comunidade.</p>
-      <form id="createChannelForm" class="modal-form">
-        <label for="channelNameInput">Nome do canal</label>
-        <input id="channelNameInput" maxlength="40" required placeholder="Ex.: novidades">
-        <label for="channelDescriptionInput">Descrição</label>
-        <input id="channelDescriptionInput" maxlength="100" placeholder="Assunto do canal">
-        <button type="submit" class="primary-button full-button">Criar canal</button>
-      </form>
-    </div>
-  </div>
-
-  <div id="notificationsModal" class="modal hidden">
-    <div class="modal-card">
-      <button class="modal-close" data-close="notificationsModal">×</button>
-      <h2>Notificações</h2>
-      <div id="notificationsList" class="notifications-list">
-        <div class="empty-state">Você ainda não tem notificações.</div>
-      </div>
-    </div>
-  </div>
-
-  <div id="toast" class="toast"></div>
 
   <script type="module" src="script.js"></script>
 </body>
