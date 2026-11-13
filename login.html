@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Entre na sua conta Connect.">
+  <title>Entrar | Connect</title>
+  <link rel="stylesheet" href="auth.css">
+</head>
+<body>
+  <main class="auth-page">
+    <a class="auth-brand" href="index.html"><span>C</span> connect.</a>
+
+    <section class="auth-card">
+      <div class="auth-icon">✦</div>
+      <h1>Que bom ter você de volta!</h1>
+      <p class="auth-subtitle">Entre na sua conta para continuar conectado.</p>
+
+      <form id="loginForm">
+        <label for="email">E-mail</label>
+        <input id="email" type="email" placeholder="seuemail@exemplo.com" required autocomplete="email">
+
+        <label for="password">Senha</label>
+        <input id="password" type="password" placeholder="Digite sua senha" required autocomplete="current-password">
+
+        <button class="auth-button" type="submit" id="loginButton">Entrar na minha conta</button>
+      </form>
+
+      <p class="auth-message" id="authMessage" role="status"></p>
+
+      <div class="auth-divider"><span>OU</span></div>
+
+      <p class="auth-switch">Ainda não tem uma conta? <a href="cadastro.html">Criar conta</a></p>
+      <a class="back-link" href="index.html">← Voltar para o Connect</a>
+    </section>
+
+    <footer class="auth-footer">Connect © 2026 · Feito para conectar.</footer>
+  </main>
+
+  <script type="module" src="auth.js"></script>
+</body>
+</html>
