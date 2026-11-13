@@ -4,202 +4,204 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#101827">
-  <title>Connect — Sua rede, suas conexões</title>
+  <meta name="theme-color" content="#202225">
+  <title>Connect — Sua comunidade</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="app-shell">
-    <aside class="sidebar">
-      <a class="brand" href="index.html">
-        <span class="brand-icon">C</span>
-        <span>connect<span class="brand-dot">.</span></span>
-      </a>
+  <div id="loadingScreen" class="loading-screen">
+    <div class="loading-logo">C</div>
+    <p>Conectando ao Connect...</p>
+  </div>
 
-      <div class="sidebar-profile">
-        <div class="avatar" id="sideAvatar">C</div>
-        <div>
-          <strong id="sideName">Carregando...</strong>
-          <small id="sideUsername">@usuario</small>
-        </div>
-      </div>
-
-      <nav class="main-nav">
-        <button class="nav-item active" data-section="feed"><span>⌂</span> Início</button>
-        <button class="nav-item" data-section="search"><span>⌕</span> Explorar</button>
-        <button class="nav-item" data-section="messages"><span>✉</span> Mensagens</button>
-        <button class="nav-item" data-section="notifications"><span>♧</span> Notificações <i id="notificationBadge"></i></button>
-        <button class="nav-item" data-section="profile"><span>◎</span> Meu perfil</button>
-      </nav>
-
-      <button class="create-button" id="openComposer">＋ Criar publicação</button>
-      <button class="logout-button" id="logoutButton">↪ Sair da conta</button>
+  <div id="app" class="app hidden">
+    <aside class="server-rail">
+      <button class="server-icon home-icon active" id="homeButton" title="Início">C</button>
+      <div class="rail-divider"></div>
+      <div id="serverList" class="server-list"></div>
+      <button class="server-icon add-server" id="createServerButton" title="Criar comunidade">+</button>
     </aside>
 
-    <main class="main-content">
-      <header class="topbar">
+    <aside class="sidebar">
+      <div class="sidebar-header">
         <div>
-          <span class="eyebrow">SUA COMUNIDADE DIGITAL</span>
-          <h1 id="pageTitle">Início</h1>
+          <strong>Connect</strong>
+          <span>Seu espaço social</span>
         </div>
-        <div class="topbar-user">
-          <div class="avatar small" id="topAvatar">C</div>
+        <button class="icon-button" id="sidebarMenuButton" title="Opções">⌄</button>
+      </div>
+
+      <div class="sidebar-search">
+        <span>⌕</span>
+        <input id="userSearchInput" type="search" placeholder="Encontrar pessoas">
+      </div>
+
+      <button class="sidebar-link active" id="friendsButton">
+        <span>♙</span> Amigos
+      </button>
+      <button class="sidebar-link" id="directMessagesButton">
+        <span>✉</span> Mensagens diretas
+      </button>
+
+      <div class="sidebar-section">
+        <div class="section-heading">
+          <span>CANAIS</span>
+          <button id="createChannelButton" title="Criar canal">+</button>
+        </div>
+        <div id="channelList" class="channel-list"></div>
+      </div>
+
+      <div class="sidebar-bottom">
+        <div class="user-mini">
+          <button class="avatar-button" id="myAvatarButton">
+            <img id="myAvatar" src="https://placehold.co/80x80/5865f2/ffffff?text=C" alt="Sua foto">
+            <span class="online-dot"></span>
+          </button>
+          <div class="user-mini-info">
+            <strong id="myName">Carregando...</strong>
+            <span id="myUsername">@usuario</span>
+          </div>
+          <button class="icon-button" id="editProfileButton" title="Editar perfil">⚙</button>
+          <button class="icon-button logout-button" id="logoutButton" title="Sair">⇥</button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-panel">
+      <header class="topbar">
+        <div class="current-channel">
+          <span id="currentChannelIcon">#</span>
+          <strong id="currentChannelName">geral</strong>
+          <span class="topbar-description" id="currentChannelDescription">Converse com a comunidade</span>
+        </div>
+        <div class="topbar-actions">
+          <button class="icon-button" id="membersToggleButton" title="Participantes">♧</button>
+          <button class="icon-button" id="notificationsButton" title="Notificações">♢</button>
+          <button class="icon-button" id="openProfileButton" title="Meu perfil">☺</button>
         </div>
       </header>
 
-      <section class="content-section active" id="feedSection">
-        <div class="welcome-banner">
+      <section id="welcomePanel" class="welcome-panel hidden">
+        <div class="welcome-symbol">C</div>
+        <h1>Bem-vindo ao Connect</h1>
+        <p>Encontre pessoas, participe de comunidades e comece uma conversa.</p>
+        <button class="primary-button" id="welcomeCreateServer">Criar comunidade</button>
+      </section>
+
+      <section id="chatPanel" class="chat-panel">
+        <div id="messagesArea" class="messages-area">
+          <div class="channel-intro">
+            <div class="channel-hash">#</div>
+            <h2 id="channelIntroName">geral</h2>
+            <p>Este é o começo deste canal. Diga olá!</p>
+          </div>
+          <div id="messagesList" class="messages-list"></div>
+        </div>
+
+        <form id="messageForm" class="message-form">
+          <button type="button" class="attach-button" id="attachButton" title="Anexar imagem">+</button>
+          <input type="file" id="messageImageInput" accept="image/*" hidden>
+          <input id="messageInput" type="text" maxlength="2000" autocomplete="off" placeholder="Enviar mensagem em #geral">
+          <button type="submit" class="send-button" title="Enviar mensagem">➤</button>
+        </form>
+      </section>
+
+      <section id="friendsPanel" class="friends-panel hidden">
+        <div class="friends-heading">
           <div>
-            <span class="eyebrow">BEM-VINDO À CONNECT</span>
-            <h2>Boas conexões<br>começam aqui.</h2>
-            <p>Compartilhe ideias, descubra pessoas e faça parte da comunidade.</p>
-            <button class="light-button" id="bannerCreate">Compartilhar algo</button>
-          </div>
-          <div class="banner-art" aria-hidden="true">
-            <div class="orbit orbit-one"></div>
-            <div class="orbit orbit-two"></div>
-            <div class="orbit-center">C</div>
-            <span class="bubble bubble-one">✦</span>
-            <span class="bubble bubble-two">♡</span>
-            <span class="bubble bubble-three">＋</span>
+            <span class="eyebrow">CONNECT</span>
+            <h1>Encontre pessoas</h1>
+            <p>Pesquise usuários e comece novas conversas.</p>
           </div>
         </div>
-
-        <div class="feed-layout">
-          <div class="feed-column">
-            <div class="composer-card">
-              <div class="avatar" id="composerAvatar">C</div>
-              <button class="composer-trigger" id="composerTrigger">O que você gostaria de compartilhar?</button>
-              <button class="composer-photo" id="composerPhoto" title="Adicionar foto">▧</button>
-            </div>
-
-            <div class="feed-toolbar">
-              <div>
-                <h2>Seu feed</h2>
-                <p>Novidades da comunidade</p>
-              </div>
-              <select id="feedFilter" aria-label="Ordenar publicações">
-                <option value="recent">Mais recentes</option>
-                <option value="popular">Mais curtidas</option>
-              </select>
-            </div>
-
-            <div id="postsContainer" class="posts-container">
-              <div class="loading-state">Carregando publicações...</div>
-            </div>
-          </div>
-
-          <aside class="right-column">
-            <div class="side-card">
-              <div class="card-heading"><h3>Sobre a Connect</h3><span>✦</span></div>
-              <p>Um espaço para compartilhar momentos, conhecer pessoas e construir conexões.</p>
-              <div class="mini-stat"><strong>Conecte-se.</strong><span>Compartilhe. Descubra.</span></div>
-            </div>
-            <div class="side-card">
-              <div class="card-heading"><h3>Pessoas</h3><span>♧</span></div>
-              <div id="suggestedUsers"><p class="muted">Encontre pessoas na aba Explorar.</p></div>
-              <button class="text-button" data-go="search">Explorar pessoas →</button>
-            </div>
-            <div class="side-footer">Connect © 2026 · Feita para aproximar pessoas.</div>
-          </aside>
-        </div>
-      </section>
-
-      <section class="content-section" id="searchSection">
-        <div class="section-intro">
-          <h2>Descubra novas conexões</h2>
-          <p>Pesquise pessoas pelo nome ou nome de usuário.</p>
-        </div>
-        <div class="search-box">
+        <div class="people-search">
           <span>⌕</span>
-          <input id="userSearchInput" type="search" placeholder="Buscar pessoas...">
+          <input id="peopleSearchInput" type="search" placeholder="Buscar por nome ou @usuário">
+          <button id="peopleSearchButton" class="primary-button">Buscar</button>
         </div>
-        <div id="searchResults" class="people-grid">
-          <p class="muted">Digite para encontrar pessoas.</p>
+        <div id="peopleResults" class="people-results">
+          <div class="empty-state">Digite um nome ou usuário para encontrar pessoas.</div>
         </div>
-      </section>
-
-      <section class="content-section" id="messagesSection">
-        <div class="section-intro">
-          <h2>Suas mensagens</h2>
-          <p>Converse com pessoas da comunidade Connect.</p>
-        </div>
-        <div class="messages-layout">
-          <div class="conversation-list">
-            <div class="search-box compact">
-              <span>⌕</span>
-              <input id="messageSearch" type="search" placeholder="Buscar conversa...">
-            </div>
-            <div id="conversationList"><p class="muted">Carregando conversas...</p></div>
-          </div>
-          <div class="chat-panel">
-            <div class="chat-empty" id="chatEmpty">
-              <div class="empty-icon">✉</div>
-              <h3>Suas conversas começam aqui</h3>
-              <p>Encontre uma pessoa na aba Explorar e inicie uma conversa.</p>
-            </div>
-            <div class="chat-active hidden" id="chatActive">
-              <div class="chat-header">
-                <div class="avatar" id="chatAvatar">C</div>
-                <div><strong id="chatName">Usuário</strong><small id="chatUsername">@usuario</small></div>
-              </div>
-              <div class="chat-messages" id="chatMessages"></div>
-              <form id="messageForm" class="message-form">
-                <input id="messageInput" maxlength="2000" placeholder="Escreva uma mensagem..." autocomplete="off" required>
-                <button type="submit">Enviar</button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="content-section" id="notificationsSection">
-        <div class="section-intro">
-          <h2>Notificações</h2>
-          <p>Acompanhe as interações com suas publicações.</p>
-        </div>
-        <div class="notifications-card" id="notificationsList">
-          <p class="muted">Carregando notificações...</p>
-        </div>
-      </section>
-
-      <section class="content-section" id="profileSection">
-        <div id="profileContent"><p class="muted">Carregando perfil...</p></div>
       </section>
     </main>
+
+    <aside class="members-panel" id="membersPanel">
+      <div class="members-heading">
+        <strong>Participantes</strong>
+        <span id="membersCount">0</span>
+      </div>
+      <div id="membersList" class="members-list"></div>
+    </aside>
   </div>
 
-  <dialog id="postDialog" class="app-dialog">
-    <form id="postForm">
-      <div class="dialog-heading">
-        <div><span class="eyebrow">COMPARTILHE COM A COMUNIDADE</span><h2>Nova publicação</h2></div>
-        <button type="button" class="close-button" data-close="postDialog">×</button>
+  <div id="profileModal" class="modal hidden">
+    <div class="modal-card profile-modal">
+      <button class="modal-close" data-close="profileModal">×</button>
+      <div class="modal-banner"></div>
+      <div class="profile-photo-area">
+        <img id="profilePhotoPreview" src="https://placehold.co/160x160/5865f2/ffffff?text=C" alt="Foto do perfil">
+        <label class="photo-change-button" for="profilePhotoInput">Alterar foto</label>
+        <input id="profilePhotoInput" type="file" accept="image/png,image/jpeg,image/webp" hidden>
       </div>
-      <textarea id="postText" maxlength="3000" placeholder="O que está acontecendo?" required></textarea>
-      <label class="upload-label" for="postImage">▧ Adicionar uma foto (opcional)</label>
-      <input id="postImage" type="file" accept="image/jpeg,image/png,image/webp">
-      <div id="postImagePreview" class="image-preview"></div>
-      <button class="primary-button full" type="submit" id="publishButton">Publicar</button>
-    </form>
-  </dialog>
+      <h2>Editar perfil</h2>
+      <form id="profileForm" class="modal-form">
+        <label for="profileNameInput">Nome de exibição</label>
+        <input id="profileNameInput" maxlength="40" required placeholder="Seu nome">
+        <label for="profileUsernameInput">Nome de usuário</label>
+        <input id="profileUsernameInput" maxlength="24" required placeholder="seuusuario">
+        <label for="profileBioInput">Sobre mim</label>
+        <textarea id="profileBioInput" maxlength="190" rows="3" placeholder="Conte um pouco sobre você"></textarea>
+        <button type="submit" class="primary-button full-button">Salvar alterações</button>
+      </form>
+      <p id="profileStatus" class="form-status"></p>
+    </div>
+  </div>
 
-  <dialog id="profileDialog" class="app-dialog">
-    <form id="profileForm">
-      <div class="dialog-heading">
-        <div><span class="eyebrow">SUA IDENTIDADE</span><h2>Editar perfil</h2></div>
-        <button type="button" class="close-button" data-close="profileDialog">×</button>
+  <div id="createServerModal" class="modal hidden">
+    <div class="modal-card">
+      <button class="modal-close" data-close="createServerModal">×</button>
+      <h2>Criar comunidade</h2>
+      <p>Crie um espaço para reunir pessoas.</p>
+      <form id="createServerForm" class="modal-form">
+        <label for="serverNameInput">Nome da comunidade</label>
+        <input id="serverNameInput" maxlength="40" required placeholder="Ex.: Comunidade de tecnologia">
+        <label for="serverDescriptionInput">Descrição</label>
+        <textarea id="serverDescriptionInput" maxlength="160" rows="3" placeholder="Sobre esta comunidade"></textarea>
+        <button type="submit" class="primary-button full-button">Criar comunidade</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="createChannelModal" class="modal hidden">
+    <div class="modal-card">
+      <button class="modal-close" data-close="createChannelModal">×</button>
+      <h2>Criar canal</h2>
+      <p>Organize as conversas da comunidade.</p>
+      <form id="createChannelForm" class="modal-form">
+        <label for="channelNameInput">Nome do canal</label>
+        <input id="channelNameInput" maxlength="40" required placeholder="Ex.: novidades">
+        <label for="channelDescriptionInput">Descrição</label>
+        <input id="channelDescriptionInput" maxlength="100" placeholder="Assunto do canal">
+        <button type="submit" class="primary-button full-button">Criar canal</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="notificationsModal" class="modal hidden">
+    <div class="modal-card">
+      <button class="modal-close" data-close="notificationsModal">×</button>
+      <h2>Notificações</h2>
+      <div id="notificationsList" class="notifications-list">
+        <div class="empty-state">Você ainda não tem notificações.</div>
       </div>
-      <label>Nome</label>
-      <input id="editName" maxlength="60" required>
-      <label>Nome de usuário</label>
-      <input id="editUsername" maxlength="24" required>
-      <label>Biografia</label>
-      <textarea id="editBio" maxlength="180" placeholder="Conte um pouco sobre você..."></textarea>
-      <button class="primary-button full" type="submit">Salvar alterações</button>
-    </form>
-  </dialog>
+    </div>
+  </div>
 
-  <div id="toast" class="toast" role="status"></div>
+  <div id="toast" class="toast"></div>
+
   <script type="module" src="script.js"></script>
 </body>
 </html>
