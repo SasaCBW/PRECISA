@@ -1,49 +1,50 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Crie sua conta gratuita no Connect.">
-  <title>Criar conta | Connect</title>
+  <title>Criar conta — Connect</title>
   <link rel="stylesheet" href="auth.css">
 </head>
 <body>
-  <main class="auth-page">
-    <a class="auth-brand" href="index.html"><span>C</span> connect.</a>
-
-    <section class="auth-card">
-      <div class="auth-icon">✦</div>
-      <h1>Faça parte do Connect!</h1>
-      <p class="auth-subtitle">Crie sua conta e comece a compartilhar suas ideias.</p>
-
-      <form id="registerForm">
-        <label for="name">Nome completo</label>
-        <input id="name" type="text" placeholder="Como podemos chamar você?" required maxlength="60" autocomplete="name">
-
-        <label for="username">Nome de usuário</label>
-        <input id="username" type="text" placeholder="Ex.: sara123" required minlength="3" maxlength="20" autocomplete="username">
-
-        <label for="email">E-mail</label>
-        <input id="email" type="email" placeholder="seuemail@exemplo.com" required autocomplete="email">
-
-        <label for="password">Senha</label>
-        <input id="password" type="password" placeholder="Crie uma senha com pelo menos 6 caracteres" required minlength="6" autocomplete="new-password">
-
-        <label for="confirmPassword">Confirmar senha</label>
-        <input id="confirmPassword" type="password" placeholder="Digite a senha novamente" required minlength="6" autocomplete="new-password">
-
-        <button class="auth-button" type="submit" id="registerButton">Criar minha conta</button>
-      </form>
-
-      <p class="auth-message" id="authMessage" role="status"></p>
-
-      <p class="auth-switch">Já possui uma conta? <a href="login.html">Entrar</a></p>
-      <a class="back-link" href="index.html">← Voltar para o Connect</a>
+  <main class="auth-layout">
+    <section class="auth-brand">
+      <a class="auth-logo" href="index.html"><span>C</span> connect.</a>
+      <div>
+        <span class="auth-eyebrow">FAÇA PARTE DA COMUNIDADE</span>
+        <h1>Suas ideias<br>merecem ser<br>compartilhadas.</h1>
+        <p>Crie seu perfil e comece a construir novas conexões.</p>
+      </div>
+      <small>Connect © 2026</small>
     </section>
 
-    <footer class="auth-footer">Connect © 2026 · Feito para conectar.</footer>
-  </main>
+    <section class="auth-main">
+      <form class="auth-card" id="registerForm">
+        <span class="auth-eyebrow">É BOM TER VOCÊ AQUI</span>
+        <h2>Crie sua conta</h2>
+        <p class="auth-description">Preencha os dados para começar.</p>
 
+        <label for="name">Nome completo</label>
+        <input id="name" type="text" maxlength="60" placeholder="Como devemos chamar você?" autocomplete="name" required>
+
+        <label for="username">Nome de usuário</label>
+        <input id="username" type="text" minlength="3" maxlength="24" placeholder="seuusuario" autocomplete="username" required>
+        <small class="field-hint">Use letras, números, ponto ou underline.</small>
+
+        <label for="email">E-mail</label>
+        <input id="email" type="email" placeholder="seuemail@exemplo.com" autocomplete="email" required>
+
+        <label for="password">Senha</label>
+        <input id="password" type="password" minlength="8" placeholder="Mínimo de 8 caracteres" autocomplete="new-password" required>
+
+        <p class="auth-error" id="authError" role="alert"></p>
+        <button class="auth-submit" id="submitButton" type="submit">Criar minha conta</button>
+
+        <p class="auth-switch">Já tem uma conta? <a href="login.html">Entrar</a></p>
+      </form>
+    </section>
+  </main>
   <script type="module" src="auth.js"></script>
 </body>
 </html>
